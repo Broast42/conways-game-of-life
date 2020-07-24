@@ -28,11 +28,18 @@ function Game() {
         return gridArr
     }
 
-    console.log(defaultGrid())
+    const [grid, setGrid] = useState(defaultGrid())
+    console.log(grid)
 
     return (
-        <div >
-        
+        <div style={{display: 'grid', gridTemplateColumns: `repeat(${columnLen}, 17px)`}}>
+            {grid.map((r, i) => (
+                r.map((c, j) => (
+                    <div key ={`${i}${j}`} className="cell">
+
+                    </div>
+                ))
+            ))}
         </div>
     )
 }
