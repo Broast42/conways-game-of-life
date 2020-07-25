@@ -11,3 +11,7 @@
 .selectedCell{
   background: black;
 }
+
+.notSelected{
+  background: white;
+}
