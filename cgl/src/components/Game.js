@@ -30,6 +30,15 @@ function Game() {
         return gridArr
     }
 
+    //random grid
+    const randomGrid = () => {
+        const gridArr = []
+        for(let i = 0; i < rowLen; i++){
+            gridArr.push(Array.from(Array(columnLen), () => (Math.random() < 0.4 ? 1 : 0)))
+        }
+        return gridArr
+    }
+
     const [grid, setGrid] = useState(defaultGrid())
     
     const userChanges = (x,y) =>{
@@ -47,30 +56,23 @@ function Game() {
     }
     
     //function to find next frame/grid applying the game of life rules
-    //can use this to run simulation or create a function that will find the nth iteritation
+    //can use this as a helper to create a function that will find the nth iteritation
+    //same as within the simulation code
     const nextFrame = () => {
-        //deep copy of grid
+       
         let gridCopy = JSON.parse(JSON.stringify(grid))
-
-        //loop through each cell and add the values of its neighbors together = total neighnbors
         for(let i = 0; i < rowLen; i++){
             for(let j = 0; j < columnLen; j++){
                 let neighbors = 0
-                //find the cordinates of each neighbor
                 neighborAddress.forEach(([x,y]) => {
                     const neighborX = i + x
                     const neighborY = j + y
-                    //if were are going to wrap to other side this is where we would 
-                        //check the coradinates above and adjust to other side if they 
-                        //hit boundries 
-                    
-                    //check boundries if we dont reach the boundries add neighbors value to neighbor
+
                     if(neighborX >= 0 && neighborX < rowLen && neighborY >= 0 && neighborY < columnLen){
                         neighbors += grid[neighborX][neighborY]
                     }
                 })
-                //if neighbors is less than 2 or greater than 3 update gridCopy[i][j] to 0
-                //else if grid[i][j] is equal to 0  and neighbors is 3 update gridCopy[i][j] to 1
+                
                 if(neighbors < 2 || neighbors > 3){
                     gridCopy[i][j] = 0
                 }else if(grid[i][j] === 0 && neighbors === 3){
@@ -79,7 +81,7 @@ function Game() {
                 
             }
         }
-        //return gridCopy
+
         return gridCopy
 
     }
@@ -146,6 +148,20 @@ function Game() {
         
     }
 
+    //clear the grid
+    const clearGrid = () => {
+        //set isRunning to false in case the sim is running
+        setIsRunning(false)
+        //set grit with default grid
+        setGrid(defaultGrid())
+    }
+
+    //set random grid
+    const setRandomGrid = () => {
+        setIsRunning(false)
+        setGrid(randomGrid())
+    }
+
 
     //console.log(grid)
 
@@ -166,15 +182,21 @@ function Game() {
             {/* UI */}
             <div>
                 {!isRunning ? 
-                    <button onClick={(e) => {startSim()}}>
-                        Start
+                    <button onClick={() => {startSim()}}>
+                        Play
                     </button>    
                 :
                     // <button>
-                    <button onClick={(e) => {stopSim()}}>
-                        Stop
+                    <button onClick={() => {stopSim()}}>
+                        Pause
                     </button>
                 }
+                <button onClick={() => {clearGrid()}}>
+                    Clear
+                </button>
+                <button onClick={() => {setRandomGrid()}}>
+                    Random
+                </button>
             </div>
         </div>
         
