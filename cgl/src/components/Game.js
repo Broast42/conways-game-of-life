@@ -6,11 +6,21 @@ function Game() {
     const [rowLen, setRowLen] = useState(25)
     const [columnLen, setColumnLen] = useState(25)
 
-    //set simulation speed 1000 = 1 second
-    const [simSpeed, setSimSpeed] = useState(1000)
+    //temp row and column values to be set by user
+    // const [tempRow, setTempRow] = useState(25)
+    // const [tempCol, setTempCol] = useState(25)
 
-    //bg color -stretch
-    //cell color -stretch
+    //set simulation speed 1000 = 1 second
+    const [simSpeed, setSimSpeed] = useState(500)
+    const speed = useRef(simSpeed)
+    speed.current = simSpeed
+
+    //bg color
+    const [deadColor, setDeadColor] = useState('#ffffff')
+    //cell color 
+    const [cellColor, setCellColor] = useState("#000000")
+    //grid color
+    const [gridColor, setGridColor] = useState("#000000")
 
     //state to check if sim is running
     const [isRunning, setIsRunning] = useState(false)
@@ -39,6 +49,7 @@ function Game() {
         return gridArr
     }
 
+    //grid
     const [grid, setGrid] = useState(defaultGrid())
     
     const userChanges = (x,y) =>{
@@ -130,8 +141,8 @@ function Game() {
         })
 
         //set time
-        setTimeout(simulation, simSpeed)
-    },[simSpeed, columnLen, neighborAddress, rowLen, grid])
+        setTimeout(simulation, speed.current)
+    },[columnLen, neighborAddress, rowLen])
 
     //functions to start and stop sim
     const startSim = () => {
@@ -162,6 +173,26 @@ function Game() {
         setGrid(randomGrid())
     }
 
+    //handleSpeed
+    const handleSpeed = e => {
+        setSimSpeed(e.target.value)
+    }
+
+    // const handleSize = e => {
+    //     if (e.target.name === "width"){
+    //         setTempCol(e.target.value)
+    //     }else if(e.target.name === "height"){
+    //         setTempRow(e.target.value)
+    //     }
+        
+    // }
+
+    // const changeSize = () => {
+    //     setColumnLen(tempCol)
+    //     setRowLen(tempRow)
+    //     setGrid(() => defaultGrid())
+    // }
+
 
     //console.log(grid)
 
@@ -171,7 +202,11 @@ function Game() {
             <div style={{display: 'grid', gridTemplateColumns: `repeat(${columnLen}, 17px)`}}>
                 {grid.map((r, i) => (
                     r.map((c, j) => (
-                        <div key ={`${i}${j}`} className={`cell ${grid[i][j] === 1 ? 'selectedCell' : 'notSelected'}`}
+                        <div key ={`${i}${j}`} 
+                            
+                            className="cell"
+                            style={{backgroundColor: grid[i][j]=== 1 ? cellColor : deadColor , border: `1px solid ${gridColor}`}}
+                            
                             onClick={() => userChanges(i,j)}
                         >
 
@@ -197,6 +232,59 @@ function Game() {
                 <button onClick={() => {setRandomGrid()}}>
                     Random
                 </button>
+                <input 
+                    type="range" 
+                    id="speed" 
+                    min="100" 
+                    max="1000" 
+                    defaultValue="500"
+                    onChange={(e)=>{handleSpeed(e)}}
+                />
+            </div>
+            <div>
+                {/* <form onSubmit={(e) =>{ e.preventDefault(); changeSize()}}>
+                    <p>Width</p>
+                    <input 
+                        type="range" 
+                        id="grid"
+                        name="width" 
+                        min="25" 
+                        max="50" 
+                        defaultValue="25"
+                        onChange={(e)=>{handleSize(e)}}
+                    />
+                    <span>{tempCol}</span>
+                    <p>Height</p>
+                    <input 
+                        type="range" 
+                        id="grid"
+                        name="height" 
+                        min="25" 
+                        max="50" 
+                        defaultValue="25"
+                        onChange={(e)=>{handleSize(e)}}
+                    />
+                    <span>{tempRow}</span>
+                    <div>
+                        <button type="submit">
+                            Set Grid Size
+                        </button>  
+                    </div>
+                </form> */}
+                <div>
+                    <input type="color" id="cellColor" defaultValue="#000000"
+                        onChange={(e) => setCellColor(e.target.value)}
+                    />
+                    <input type="color" id="deadColor" defaultValue="#ffffff"
+                        onChange={(e) => setDeadColor(e.target.value)}
+                    />
+                   <input type="color" id="gridColor" defaultValue="#000000"
+                        onChange={(e) => setGridColor(e.target.value)}
+                    />
+
+                </div>
+                
+
             </div>
         </div>
         
