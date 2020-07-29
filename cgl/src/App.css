@@ -3,8 +3,8 @@
 }
 
 .cell{
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   border: 1px solid black;
 }
 
@@ -14,4 +14,8 @@
 
 .notSelected{
   background: white;
+}
+
+button{
+  min-width: 80px;
 }

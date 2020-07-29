@@ -3,12 +3,8 @@ import '../App.css'
 
 function Game() {
     //set the row and column heigh
-    const [rowLen, setRowLen] = useState(25)
-    const [columnLen, setColumnLen] = useState(25)
-
-    //temp row and column values to be set by user
-    // const [tempRow, setTempRow] = useState(25)
-    // const [tempCol, setTempCol] = useState(25)
+    const [rowLen, setRowLen] = useState(40)
+    const [columnLen, setColumnLen] = useState(40)
 
     //set simulation speed 1000 = 1 second
     const [simSpeed, setSimSpeed] = useState(500)
@@ -44,8 +40,131 @@ function Game() {
     const randomGrid = () => {
         const gridArr = []
         for(let i = 0; i < rowLen; i++){
-            gridArr.push(Array.from(Array(columnLen), () => (Math.random() < 0.4 ? 1 : 0)))
+            gridArr.push(Array.from(Array(columnLen), () => (Math.random() < 0.2 ? 1 : 0)))
         }
+        return gridArr
+    }
+
+    //grid presets
+    const pulsar = [
+        [18,18],
+        [19,18],
+        [20,18],
+        [18,20],
+        [19,20],
+        [20,20],
+        [16,15],
+        [16,16],
+        [16,17],
+        [16,21],
+        [16,22],
+        [16,23],
+        [28,23],
+        [28,21],
+        [28,22],
+        [28,17],
+        [28,16],
+        [28,15],
+        [26,25],
+        [25,25],
+        [24,25],
+        [26,20],
+        [25,20],
+        [24,20],
+        [26,18],
+        [25,18],
+        [24,18],
+        [26,13],
+        [24,13],
+        [25,13],
+        [23,17],
+        [23,16],
+        [23,15],
+        [23,21],
+        [23,22],
+        [23,23],
+        [21,17],
+        [21,16],
+        [21,15],
+        [21,21],
+        [21,22],
+        [21,23],
+        [20,13],
+        [19,13],
+        [18,13],
+        [20,25],
+        [19,25],
+        [18,25]
+    ]
+
+    const gliderGun = [
+        [7,1],
+        [8,1],
+        [8,2],
+        [7,2],
+        [8,11],
+        [7,11],
+        [9,11],
+        [10,12],
+        [6,12],
+        [5,13],
+        [5,14],
+        [11,13],
+        [11,14],
+        [10,16],
+        [9,17],
+        [8,17],
+        [7,17],
+        [6,17],
+        [6,16],
+        [8,15],
+        [8,18],
+        [7,21],
+        [6,21],
+        [5,21],
+        [5,22],
+        [6,22],
+        [7,22],
+        [4,23],
+        [8,23],
+        [8,25],
+        [9,25],
+        [4,25],
+        [3,25],
+        [5,35],
+        [5,36],
+        [6,35],
+        [6,36]
+    ]
+
+    const blinker = [[18,20],[19,20],[20,20]]
+    const toad = [[20,18],[20,19],[20,20],[19,19],[19,20],[19,21]]
+    const glider = [[9,11],[9,13],[10,13],[10,12],[11,12]]
+    const lwSpaceShip = [[10,11],[10,14],[11,15],[12,15],[13,15],[13,14],[13,13],[13,12],[12,11]]
+    const mwSpaceShip = [[11,8],[10,10],[11,12],[12,13],[13,13],[14,13],[14,12],[14,11],[14,10],[14,9],[13,8]]
+
+    const doubleShips = () =>{
+        let newMw  = JSON.parse(JSON.stringify(lwSpaceShip))
+        mwSpaceShip.forEach(([x,y]) => {
+            let newx = x +12
+            let newspace = [newx, y]
+            newMw.push(newspace)
+        })
+    
+        return newMw
+    }
+
+    //sets grid with a defined preset
+    const preSetGrid = (preset) => {
+        const gridArr = []
+        for(let i = 0; i < rowLen; i++){
+            gridArr.push(Array.from(Array(columnLen), () => 0))
+        }
+
+        preset.forEach(([x,y]) => {
+            gridArr[x][y] = 1
+        })
+        
         return gridArr
     }
 
@@ -59,6 +178,7 @@ function Game() {
         if(!isRunning){
             if (grid[x][y] === 0){
                 gridCopy[x][y] = 1
+                console.log(x,y)
             }else if(grid[x][y] === 1){
                 gridCopy[x][y] = 0
             }
@@ -66,36 +186,6 @@ function Game() {
         setGrid(gridCopy)
     }
     
-    //function to find next frame/grid applying the game of life rules
-    //can use this as a helper to create a function that will find the nth iteritation
-    //same as within the simulation code
-    const nextFrame = () => {
-       
-        let gridCopy = JSON.parse(JSON.stringify(grid))
-        for(let i = 0; i < rowLen; i++){
-            for(let j = 0; j < columnLen; j++){
-                let neighbors = 0
-                neighborAddress.forEach(([x,y]) => {
-                    const neighborX = i + x
-                    const neighborY = j + y
-
-                    if(neighborX >= 0 && neighborX < rowLen && neighborY >= 0 && neighborY < columnLen){
-                        neighbors += grid[neighborX][neighborY]
-                    }
-                })
-                
-                if(neighbors < 2 || neighbors > 3){
-                    gridCopy[i][j] = 0
-                }else if(grid[i][j] === 0 && neighbors === 3){
-                    gridCopy[i][j] = 1
-                }
-                
-            }
-        }
-
-        return gridCopy
-
-    }
 
     //timeout function to run simulation
     const simulation = useCallback(() =>{
@@ -104,8 +194,7 @@ function Game() {
             return
         }
 
-        //set grid with nextFrame
-        //setGrid(nextFrame())
+        //set grid 
         setGrid((g) => {
             let gridCopy = JSON.parse(JSON.stringify(g))
 
@@ -178,28 +267,12 @@ function Game() {
         setSimSpeed(e.target.value)
     }
 
-    // const handleSize = e => {
-    //     if (e.target.name === "width"){
-    //         setTempCol(e.target.value)
-    //     }else if(e.target.name === "height"){
-    //         setTempRow(e.target.value)
-    //     }
-        
-    // }
-
-    // const changeSize = () => {
-    //     setColumnLen(tempCol)
-    //     setRowLen(tempRow)
-    //     setGrid(() => defaultGrid())
-    // }
-
-
     //console.log(grid)
 
     return (
         <div>
             {/* grid */}
-            <div style={{display: 'grid', gridTemplateColumns: `repeat(${columnLen}, 17px)`}}>
+            <div style={{display: 'grid', gridTemplateColumns: `repeat(${columnLen}, 15px)`}}>
                 {grid.map((r, i) => (
                     r.map((c, j) => (
                         <div key ={`${i}${j}`} 
@@ -242,35 +315,6 @@ function Game() {
                 />
             </div>
             <div>
-                {/* <form onSubmit={(e) =>{ e.preventDefault(); changeSize()}}>
-                    <p>Width</p>
-                    <input 
-                        type="range" 
-                        id="grid"
-                        name="width" 
-                        min="25" 
-                        max="50" 
-                        defaultValue="25"
-                        onChange={(e)=>{handleSize(e)}}
-                    />
-                    <span>{tempCol}</span>
-                    <p>Height</p>
-                    <input 
-                        type="range" 
-                        id="grid"
-                        name="height" 
-                        min="25" 
-                        max="50" 
-                        defaultValue="25"
-                        onChange={(e)=>{handleSize(e)}}
-                    />
-                    <span>{tempRow}</span>
-                    <div>
-                        <button type="submit">
-                            Set Grid Size
-                        </button>  
-                    </div>
-                </form> */}
                 <div>
                     <input type="color" id="cellColor" defaultValue="#000000"
                         onChange={(e) => setCellColor(e.target.value)}
@@ -282,6 +326,32 @@ function Game() {
                         onChange={(e) => setGridColor(e.target.value)}
                     />
 
+                </div>
+                <div>
+                    <button onClick={() => setGrid(preSetGrid(blinker))}>
+                        Blinker
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(toad))}>
+                        Toad
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(pulsar))}>
+                        Pulsar
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(glider))}>
+                        Glider
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(lwSpaceShip))}>
+                        Space Ship Sm
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(mwSpaceShip))}>
+                        Space Ship Med
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(doubleShips()))}>
+                        Double Ships
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(gliderGun))}>
+                        Glider Gun
+                    </button>
                 </div>
                 
 
