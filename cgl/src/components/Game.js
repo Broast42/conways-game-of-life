@@ -93,36 +93,42 @@ function Game() {
     //console.log(grid)
 
     return (
-        <div>
+        <div className="gameWindow">
             {/* grid */}
-            <GridWindow
-                columnLen = {columnLen}
-                grid = {[grid,setGrid]}
-                cellColor = {cellColor}
-                deadColor = {deadColor}
-                gridColor = {gridColor}
-                isRunning = {isRunning}
-            />
+            <div className="gridWindow">
+                <GridWindow
+                    columnLen = {columnLen}
+                    grid = {[grid,setGrid]}
+                    cellColor = {cellColor}
+                    deadColor = {deadColor}
+                    gridColor = {gridColor}
+                    isRunning = {isRunning}
+                />
+            </div>
+           
             {/* UI */}
-            <SimUi 
-                isRunning={[isRunning,setIsRunning]} 
-                running={running} 
-                simulation={simulation}
-                setGrid={setGrid}
-                defaultGrid={defaultGrid}
-                setSimSpeed={setSimSpeed}
-            />
-            <ColorUI 
-                setDeadColor={setDeadColor}
-                setGridColor={setGridColor}
-                setCellColor={setCellColor}
-            />
-            <PreSetsUI 
-                setGrid={setGrid}
-                setIsRunning={setIsRunning}
-                rowLen={rowLen}
-                columnLen={columnLen}
-            />
+            <div>
+                <SimUi 
+                    isRunning={[isRunning,setIsRunning]} 
+                    running={running} 
+                    simulation={simulation}
+                    setGrid={setGrid}
+                    defaultGrid={defaultGrid}
+                    simSpeed={[simSpeed,setSimSpeed]}
+                />
+                <ColorUI 
+                    setDeadColor={setDeadColor}
+                    setGridColor={setGridColor}
+                    setCellColor={setCellColor}
+                />
+                <PreSetsUI 
+                    setGrid={setGrid}
+                    setIsRunning={setIsRunning}
+                    rowLen={rowLen}
+                    columnLen={columnLen}
+                /> 
+            </div>
+            
             
             
         </div>

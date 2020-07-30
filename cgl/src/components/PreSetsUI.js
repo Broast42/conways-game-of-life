@@ -146,34 +146,51 @@ const PreSetsUI = props => {
     }
 
     return (
-        <div>
-            <button onClick={() => {setRandomGrid()}}>
-                Random
-            </button>
-            <button onClick={() => setGrid(preSetGrid(blinker))}>
-                Blinker
-            </button>
-            <button onClick={() => setGrid(preSetGrid(toad))}>
-                Toad
-            </button>
-            <button onClick={() => setGrid(preSetGrid(pulsar))}>
-                Pulsar
-            </button>
-            <button onClick={() => setGrid(preSetGrid(glider))}>
-                Glider
-            </button>
-            <button onClick={() => setGrid(preSetGrid(lwSpaceShip))}>
-                Space Ship Sm
-            </button>
-            <button onClick={() => setGrid(preSetGrid(mwSpaceShip))}>
-                Space Ship Med
-            </button>
-            <button onClick={() => setGrid(preSetGrid(doubleShips()))}>
-                Double Ships
-            </button>
-            <button onClick={() => setGrid(preSetGrid(gliderGun))}>
-                Glider Gun
-            </button>
+        <div className="presetWindow">
+            
+            <div className="randomSlot">
+                <button onClick={() => {setRandomGrid()}}>
+                    Random Grid
+                </button>
+            </div>
+            
+            <div className="">
+                <p>Occillators</p>
+                <div className="preFlex occillators">
+                    <button onClick={() => setGrid(preSetGrid(blinker))}>
+                        Blinker
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(toad))}>
+                        Toad
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(pulsar))}>
+                        Pulsar
+                    </button> 
+                </div>
+                <p>Space Ships</p>
+                <div className="preFlex spaceShips">
+                    <button onClick={() => setGrid(preSetGrid(glider))}>
+                        Glider
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(lwSpaceShip))}>
+                        Space Ship Sm
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(mwSpaceShip))}>
+                        Space Ship Med
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(doubleShips()))}>
+                        Double Ships
+                    </button>
+                    <button onClick={() => setGrid(preSetGrid(gliderGun))}>
+                        Glider Gun
+                    </button>
+
+                </div>
+                <div className="randomSlot">
+                    
+                </div>
+                
+            </div>
         </div> 
   )
 }

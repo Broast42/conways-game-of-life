@@ -8,7 +8,7 @@ const SimUI = props => {
     const simulation = props.simulation
     const setGrid = props.setGrid
     const defaultGrid = props.defaultGrid
-    const setSimSpeed = props.setSimSpeed
+    const [simSpeed, setSimSpeed] = props.simSpeed
 
     //functions to start stop and clear sim
     const startSim = () => {
@@ -37,21 +37,22 @@ const SimUI = props => {
 
     return (
     
-        <div>
+        <div className="simUI">
             {!isRunning ? 
-                <button onClick={() => {startSim()}}>
+                <button className="playBtn" onClick={() => {startSim()}}>
                     Play
                 </button>    
             :
-                <button onClick={() => {stopSim()}}>
+                <button className="pauseBtn" onClick={() => {stopSim()}}>
                     Pause
                 </button>
             }
-            <button onClick={() => {clearGrid()}}>
-                Clear
+            <button onClick={() => {clearGrid()}} className={!isRunning ? 'stopBtn' : 'clearBtn'}>
+                {!isRunning ? 'Clear' : 'Stop'}
             </button>
-
-            <input 
+            <span>Speed</span>
+            <input
+                className="speedBar" 
                 type="range" 
                 id="speed" 
                 min="100" 
@@ -59,7 +60,7 @@ const SimUI = props => {
                 defaultValue="500"
                 onChange={(e)=>{handleSpeed(e)}}
             />
-                    
+            <span className="speedNum">{simSpeed/1000}s</span>       
         </div>
     
     )

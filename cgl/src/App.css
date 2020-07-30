@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.gameWindow{
+  display: flex;
+  margin: 10px;
+}
+
+.gridWindow{
+  margin-right: 10px;
+}
+
 .cell{
   width: 15px;
   height: 15px;
@@ -18,4 +27,116 @@
 
 button{
   min-width: 80px;
+  
+}
+
+.simUI{
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 6px;
+  width: 430px;
+}
+
+.simUI button{
+  margin-right: 10px;
+}
+
+.speedBar{
+  margin: 1px 5px 0px 5px; 
+  position: absolute;
+}
+
+.speedNum{
+  position: absolute;
+  margin-left: 150px;
+}
+
+.playBtn{
+  background: lightgreen;
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.pauseBtn{
+  background: orange;
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.stopBtn{
+  background: rgb(128, 185, 243);
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.clearBtn{
+  background: rgb(241, 92, 92);
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.colorWindow{
+  width: 442px;
+  margin-top: 20px;;
+  border: 2px solid black;
+  border-radius: 5px;
+  
+}
+
+.colorBoxes{
+  display:flex;
+  margin: 10px;
+}
+
+.colorCenter{
+  width: 250px; 
+  margin: 0px auto;
+}
+
+.colorLable{
+  width: 150px;
+}
+
+.presetWindow{
+  width: 430px;
+  margin-top: 20px;;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.presetWindow p{
+  text-align: center;
+}
+
+.randomSlot{
+  width: 100px;
+  margin: 10px auto;
+}
+
+.preFlex{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  
+}
+
+.occillators{
+  border: 2px solid rgb(128, 185, 243);
+  border-radius: 5px;
+  padding: 20px 0 20px 0;
+}
+
+.spaceShips{
+  border: 2px solid rgb(155, 82, 238);
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+}
+
+.spaceShips button{
+  margin: 10px;
 }
