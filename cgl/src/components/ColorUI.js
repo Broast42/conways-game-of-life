@@ -18,7 +18,7 @@ const ColorUI = props => {
                 </div>
                 <div className="colorBoxes">
                     <div className="colorLable">Cell Color (Dead)</div>
-                    <input type="color" id="deadColor" defaultValue="#ffffff"
+                    <input type="color" id="deadColor" defaultValue="#e6e6e6"
                         onChange={(e) => setDeadColor(e.target.value)}
                     /> 
                 </div>

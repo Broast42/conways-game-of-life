@@ -18,7 +18,7 @@ function Game() {
     speed.current = simSpeed
 
     //bg color
-    const [deadColor, setDeadColor] = useState('#ffffff')
+    const [deadColor, setDeadColor] = useState('#e6e6e6')
     //cell color 
     const [cellColor, setCellColor] = useState("#000000")
     //grid color
