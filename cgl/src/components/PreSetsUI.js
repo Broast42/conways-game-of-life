@@ -148,12 +148,6 @@ const PreSetsUI = props => {
     return (
         <div className="presetWindow">
             
-            <div className="randomSlot">
-                <button onClick={() => {setRandomGrid()}}>
-                    Random Grid
-                </button>
-            </div>
-            
             <div className="">
                 <p>Occillators</p>
                 <div className="preFlex occillators">
@@ -187,8 +181,10 @@ const PreSetsUI = props => {
 
                 </div>
                 <div className="randomSlot">
-                    
-                </div>
+                <button onClick={() => {setRandomGrid()}}>
+                    Random Grid
+                </button>
+            </div>
                 
             </div>
         </div> 

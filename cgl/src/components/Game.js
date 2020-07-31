@@ -1,8 +1,10 @@
 import React, { useState, useRef, useCallback } from 'react'
+import { Route } from 'react-router-dom'
 import SimUi from './SimUI'
-import ColorUI from './ColorUI'
-import PreSetsUI from './PreSetsUI'
+import AdvancedUI from './AdvancedUI'
 import GridWindow from './GridWindow'
+import Header from './Header'
+import About from './About'
 import '../App.css'
 
 function Game() {
@@ -107,7 +109,8 @@ function Game() {
             </div>
            
             {/* UI */}
-            <div>
+            <div className="ui">
+                <Header/>
                 <SimUi 
                     isRunning={[isRunning,setIsRunning]} 
                     running={running} 
@@ -116,17 +119,18 @@ function Game() {
                     defaultGrid={defaultGrid}
                     simSpeed={[simSpeed,setSimSpeed]}
                 />
-                <ColorUI 
-                    setDeadColor={setDeadColor}
-                    setGridColor={setGridColor}
-                    setCellColor={setCellColor}
+                <Route exact path="/" component={About} />
+                <Route exact path="/aui" render={props =>
+                    <AdvancedUI
+                        setDeadColor={setDeadColor}
+                        setGridColor={setGridColor}
+                        setCellColor={setCellColor}
+                        setGrid={setGrid}
+                        setIsRunning={setIsRunning}
+                        rowLen={rowLen}
+                        columnLen={columnLen}
+                    />}
                 />
-                <PreSetsUI 
-                    setGrid={setGrid}
-                    setIsRunning={setIsRunning}
-                    rowLen={rowLen}
-                    columnLen={columnLen}
-                /> 
             </div>
             
             
