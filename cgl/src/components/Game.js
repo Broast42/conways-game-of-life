@@ -12,6 +12,8 @@ function Game() {
     const [rowLen, setRowLen] = useState(40)
     const [columnLen, setColumnLen] = useState(40)
 
+    const [gen, setGen] = useState(0)
+
     //set simulation speed 1000 = 1 second
     const [simSpeed, setSimSpeed] = useState(500)
     const speed = useRef(simSpeed)
@@ -86,7 +88,7 @@ function Game() {
             //return gridCopy
             return gridCopy
         })
-
+        setGen((gen) => gen += 1)
         //set time
         setTimeout(simulation, speed.current)
     },[columnLen, neighborAddress, rowLen])
@@ -118,6 +120,7 @@ function Game() {
                     setGrid={setGrid}
                     defaultGrid={defaultGrid}
                     simSpeed={[simSpeed,setSimSpeed]}
+                    gen={gen}
                 />
                 <Route exact path="/" component={About} />
                 <Route exact path="/aui" render={props =>

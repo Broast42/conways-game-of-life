@@ -215,7 +215,7 @@ header h1{
 
 .about{
   width: 430px;
-  margin-top: 20px;;
+  margin-top: 10px;;
   border: 2px solid black;
   border-radius: 5px;
   padding: 6px;
@@ -236,4 +236,9 @@ header nav{
 .rules{
   border-top: 2px solid  rgb(26, 129, 233);
   border-bottom: 2px solid  rgb(127, 29, 238);
+}
+
+.generation{
+  margin-top: 5px;
+  color: white;
 }

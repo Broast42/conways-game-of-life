@@ -36,33 +36,37 @@ const SimUI = props => {
     }
 
     return (
-    
-        <div className="simUI">
-            {!isRunning ? 
-                <button className="playBtn" onClick={() => {startSim()}}>
-                    Play
-                </button>    
-            :
-                <button className="pauseBtn" onClick={() => {stopSim()}}>
-                    Pause
+
+        <div>
+            <div className="simUI">
+                {!isRunning ? 
+                    <button className="playBtn" onClick={() => {startSim()}}>
+                        Play
+                    </button>    
+                :
+                    <button className="pauseBtn" onClick={() => {stopSim()}}>
+                        Pause
+                    </button>
+                }
+                <button onClick={() => {clearGrid()}} className={!isRunning ? 'stopBtn' : 'clearBtn'}>
+                    {!isRunning ? 'Clear' : 'Stop'}
                 </button>
-            }
-            <button onClick={() => {clearGrid()}} className={!isRunning ? 'stopBtn' : 'clearBtn'}>
-                {!isRunning ? 'Clear' : 'Stop'}
-            </button>
-            <span>Speed</span>
-            <input
-                className="speedBar" 
-                type="range" 
-                id="speed" 
-                min="100" 
-                max="1000" 
-                defaultValue="500"
-                onChange={(e)=>{handleSpeed(e)}}
-            />
-            <span className="speedNum">{simSpeed/1000}s</span>       
+                <span>Speed</span>
+                <input
+                    className="speedBar" 
+                    type="range" 
+                    id="speed" 
+                    min="100" 
+                    max="1000" 
+                    defaultValue="500"
+                    onChange={(e)=>{handleSpeed(e)}}
+                />
+                <span className="speedNum">{simSpeed/1000}s</span>       
+            </div>
+            <div className="generation">
+                <span>Generation</span> {props.gen}
+            </div>
         </div>
-    
     )
 }
 
