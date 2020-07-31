@@ -193,6 +193,16 @@ header h1{
   padding: 10px 0 10px 0;
 }
 
+.purple{
+  color: rgb(97, 1, 206);
+  text-shadow: 0px 0px 1px black;
+}
+
+.blue{
+  color: rgb(3, 93, 184);
+  text-shadow: 0px 0px 1px black;
+}
+
 .spaceShips button{
   margin: 10px;
   background:rgb(26, 129, 233);
@@ -214,11 +224,16 @@ header h1{
 }
 
 .about h2,h3{
-  font-size: 15px;
+  font-size: 16px;
   line-height: 0rem;  
 }
 
 header nav{
   display: flex;
   justify-content: space-evenly;
+}
+
+.rules{
+  border-top: 2px solid  rgb(26, 129, 233);
+  border-bottom: 2px solid  rgb(127, 29, 238);
 }
