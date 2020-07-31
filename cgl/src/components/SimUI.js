@@ -9,6 +9,7 @@ const SimUI = props => {
     const setGrid = props.setGrid
     const defaultGrid = props.defaultGrid
     const [simSpeed, setSimSpeed] = props.simSpeed
+    const [gen, setGen] = props.gen
 
     //functions to start stop and clear sim
     const startSim = () => {
@@ -28,6 +29,7 @@ const SimUI = props => {
         setIsRunning(false)
         //set grit with default grid
         setGrid(defaultGrid())
+        setGen(0)
     }
 
     //handleSpeed
@@ -64,7 +66,7 @@ const SimUI = props => {
                 <span className="speedNum">{simSpeed/1000}s</span>       
             </div>
             <div className="generation">
-                <span>Generation</span> {props.gen}
+                <span>Generation</span> {gen}
             </div>
         </div>
     )

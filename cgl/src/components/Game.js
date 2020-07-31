@@ -120,7 +120,7 @@ function Game() {
                     setGrid={setGrid}
                     defaultGrid={defaultGrid}
                     simSpeed={[simSpeed,setSimSpeed]}
-                    gen={gen}
+                    gen={[gen, setGen]}
                 />
                 <Route exact path="/" component={About} />
                 <Route exact path="/aui" render={props =>
