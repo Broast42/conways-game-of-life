@@ -93,6 +93,33 @@ function Game() {
         setTimeout(simulation, speed.current)
     },[columnLen, neighborAddress, rowLen])
 
+    const nextFrame = () => {
+        let gridCopy = JSON.parse(JSON.stringify(grid))
+
+        for(let i = 0; i < rowLen; i++){
+            for(let j = 0; j < columnLen; j++){
+                let neighbors = 0
+               
+                neighborAddress.forEach(([x,y]) => {
+                    const neighborX = i + x
+                    const neighborY = j + y
+                    
+                    if(neighborX >= 0 && neighborX < rowLen && neighborY >= 0 && neighborY < columnLen){
+                        neighbors += grid[neighborX][neighborY]
+                    }
+                })
+
+                if(neighbors < 2 || neighbors > 3){
+                    gridCopy[i][j] = 0
+                }else if(grid[i][j] === 0 && neighbors === 3){
+                    gridCopy[i][j] = 1
+                }
+                
+            }
+        }
+        setGrid(() => gridCopy)
+    }
+
 
     //console.log(grid)
 
@@ -121,6 +148,7 @@ function Game() {
                     defaultGrid={defaultGrid}
                     simSpeed={[simSpeed,setSimSpeed]}
                     gen={[gen, setGen]}
+                    nextFrame={nextFrame}
                 />
                 <Route exact path="/" component={About} />
                 <Route exact path="/aui" render={props =>
@@ -132,6 +160,7 @@ function Game() {
                         setIsRunning={setIsRunning}
                         rowLen={rowLen}
                         columnLen={columnLen}
+                        setGen={setGen}
                     />}
                 />
             </div>

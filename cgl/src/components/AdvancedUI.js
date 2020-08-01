@@ -16,6 +16,7 @@ const AdvancedUI = props => {
                 setIsRunning={props.setIsRunning}
                 rowLen={props.rowLen}
                 columnLen={props.columnLen}
+                setGen={props.setGen}
             />  
         </div>
     )

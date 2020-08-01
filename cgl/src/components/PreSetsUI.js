@@ -7,6 +7,7 @@ const PreSetsUI = props => {
     const setIsRunning = props.setIsRunning
     const rowLen = props.rowLen
     const columnLen = props.columnLen
+    const setGen = props.setGen
 
     //grid presets
     const pulsar = [
@@ -151,37 +152,37 @@ const PreSetsUI = props => {
             <div className="">
                 <p>Occillators</p>
                 <div className="preFlex occillators">
-                    <button onClick={() => setGrid(preSetGrid(blinker))}>
+                    <button onClick={() => {setGrid(preSetGrid(blinker)); setGen(0)}}>
                         Blinker
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(toad))}>
+                    <button onClick={() => {setGrid(preSetGrid(toad)); setGen(0)}}>
                         Toad
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(pulsar))}>
+                    <button onClick={() => {setGrid(preSetGrid(pulsar)); setGen(0)}}>
                         Pulsar
                     </button> 
                 </div>
                 <p>Space Ships</p>
                 <div className="preFlex spaceShips">
-                    <button onClick={() => setGrid(preSetGrid(glider))}>
+                    <button onClick={() => {setGrid(preSetGrid(glider)); setGen(0)}}>
                         Glider
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(lwSpaceShip))}>
+                    <button onClick={() => {setGrid(preSetGrid(lwSpaceShip)); setGen(0)}}>
                         Space Ship Sm
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(mwSpaceShip))}>
+                    <button onClick={() => {setGrid(preSetGrid(mwSpaceShip)); setGen(0)}}>
                         Space Ship Med
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(doubleShips()))}>
+                    <button onClick={() => {setGrid(preSetGrid(doubleShips())); setGen(0)}}>
                         Double Ships
                     </button>
-                    <button onClick={() => setGrid(preSetGrid(gliderGun))}>
+                    <button onClick={() => {setGrid(preSetGrid(gliderGun)); setGen(0)}}>
                         Glider Gun
                     </button>
 
                 </div>
                 <div className="randomSlot">
-                <button onClick={() => {setRandomGrid()}}>
+                <button onClick={() => {setRandomGrid(); setGen(0)}}>
                     Random Grid
                 </button>
             </div>

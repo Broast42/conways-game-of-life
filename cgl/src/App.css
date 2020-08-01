@@ -239,7 +239,19 @@ header nav{
 }
 
 .generation{
+  display: flex;
+  justify-content: space-between;
   margin-top: 5px;
   color: white;
   text-align: center;
+}
+
+.generation button{
+  background: green;
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+  margin-left: 3px;
 }
