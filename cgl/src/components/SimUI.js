@@ -66,7 +66,7 @@ const SimUI = props => {
                 <span className="speedNum">{simSpeed/1000}s</span>       
             </div>
             <div className="generation">
-                <button onClick={() =>{props.nextFrame(); setGen((gen) => gen += 1)}}>
+                <button onClick={() =>{props.nextFrame();}}>
                     Next Frame 
                 </button>
                 <div>

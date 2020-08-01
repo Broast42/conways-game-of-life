@@ -117,7 +117,11 @@ function Game() {
                 
             }
         }
-        setGrid(() => gridCopy)
+        if (!isRunning){
+           setGrid(() => gridCopy)
+           setGen((gen) => gen += 1) 
+        }
+        
     }
 
 
