@@ -1,0 +1,257 @@
+
+
+body{
+  background: rgb(55,54,57);
+  background: linear-gradient(90deg, rgba(55,54,57,1) 0%, rgba(95,95,105,1) 86%);
+}
+
+a{
+  text-decoration: none;
+  color: white
+}
+
+a:hover{
+  color: orange;
+}
+
+.gameWindow{
+  display: flex;
+  margin: 10px;
+}
+
+.gridWindow{
+  margin-right: 10px;
+}
+
+.cell{
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+}
+
+.selectedCell{
+  background: black;
+}
+
+.notSelected{
+  background: white;
+}
+
+button{
+  min-width: 80px;
+  
+}
+
+.ui{
+  margin-left: 20px;
+}
+
+header{
+  width: 435px;
+  height: 50px;
+  background: rgb(26,129,233);
+  background: linear-gradient(90deg, rgba(26,129,233,1) 34%, rgba(127,29,238,1) 100%);
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+header h1{
+  font-size: 20px;
+  line-height: 0rem;
+}
+
+.simUI{
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 6px;
+  width: 430px;
+  background: rgb(123,122,126);
+  background: linear-gradient(90deg, rgba(123,122,126,1) 0%, rgba(164,164,173,1) 86%);
+}
+
+.simUI button{
+  margin-right: 10px;
+}
+
+.speedBar{
+  margin: 1px 5px 0px 5px; 
+  position: absolute;
+}
+
+.speedNum{
+  position: absolute;
+  margin-left: 150px;
+}
+
+.playBtn{
+  background: lightgreen;
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.pauseBtn{
+  background: orange;
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.stopBtn{
+  background: rgb(128, 185, 243);
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.clearBtn{
+  background: rgb(241, 92, 92);
+  border: 1px solid grey;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.colorWindow{
+  width: 442px;
+  margin-top: 20px;;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: rgb(123,122,126);
+  background: linear-gradient(90deg, rgba(123,122,126,1) 0%, rgba(164,164,173,1) 86%);
+}
+
+.colorBoxes{
+  display:flex;
+  margin: 10px;
+}
+
+.colorCenter{
+  width: 250px; 
+  margin: 0px auto;
+}
+
+.colorLable{
+  width: 150px;
+}
+
+.presetWindow{
+  width: 430px;
+  margin-top: 20px;;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 6px;
+  background: rgb(123,122,126);
+  background: linear-gradient(90deg, rgba(123,122,126,1) 0%, rgba(164,164,173,1) 86%);
+}
+
+.presetWindow p{
+  text-align: center;
+}
+
+.randomSlot{
+  width: 430px;
+  margin: 10px auto;
+}
+
+.randomSlot button{
+  width: 430px;
+  background:linear-gradient(90deg, rgba(26,129,233,1) 0%, rgba(127,29,238,1) 100%);
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+}
+
+.preFlex{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  
+}
+
+.occillators{
+  border: 3px solid rgb(26, 129, 233);
+  border-radius: 5px;
+  padding: 20px 0 20px 0;
+}
+
+.occillators button{
+  background:rgb(127, 29, 238);
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+}
+
+.spaceShips{
+  border: 3px solid rgb(127, 29, 238);
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+}
+
+.purple{
+  color: rgb(97, 1, 206);
+  text-shadow: 0px 0px 1px black;
+}
+
+.blue{
+  color: rgb(3, 93, 184);
+  text-shadow: 0px 0px 1px black;
+}
+
+.spaceShips button{
+  margin: 10px;
+  background:rgb(26, 129, 233);
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+}
+
+.about{
+  width: 430px;
+  margin-top: 10px;;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 6px;
+  background: rgb(123,122,126);
+  background: linear-gradient(90deg, rgba(123,122,126,1) 0%, rgba(164,164,173,1) 86%);    
+}
+
+.about h2,h3{
+  font-size: 16px;
+  line-height: 0rem;  
+}
+
+header nav{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.rules{
+  border-top: 2px solid  rgb(26, 129, 233);
+  border-bottom: 2px solid  rgb(127, 29, 238);
+}
+
+.generation{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+}
+
+.generation button{
+  background: green;
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+  margin-left: 3px;
+}
