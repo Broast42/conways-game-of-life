@@ -8,7 +8,7 @@ const About = () => {
             <p>
                 Conways Game of Life was created by John Conway in 1970. 
                 Based on cellular automation, the Game Of Life is a simulation 
-                with on a few simple rules that lead to complex and unexpected results. 
+                with only a few simple rules that lead to complex and unexpected results. 
                 Simply select a few cells on the grid to make them alive. 
                 Press the play button and see how the cells come to life or disappear and die.
             </p>
